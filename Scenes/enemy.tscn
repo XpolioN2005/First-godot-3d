@@ -3,13 +3,13 @@
 [ext_resource type="Texture2D" uid="uid://226vqqy13fix" path="res://Assests/Red/texture_08.png" id="1_6spx4"]
 [ext_resource type="Script" path="res://Scripts/enemy.gd" id="1_qb3pq"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_q41or"]
-
 [sub_resource type="BoxMesh" id="BoxMesh_guspx"]
 lightmap_size_hint = Vector2i(14, 21)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ehojr"]
 albedo_texture = ExtResource("1_6spx4")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_q41or"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_rorj8"]
 
@@ -18,12 +18,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 script = ExtResource("1_qb3pq")
 speed = 600
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-shape = SubResource("BoxShape3D_q41or")
-
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("BoxMesh_guspx")
 surface_material_override/0 = SubResource("StandardMaterial3D_ehojr")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_q41or")
 
 [node name="Area3D" type="Area3D" parent="."]
 transform = Transform3D(1.1, 0, 0, 0, 1.1, 0, 0, 0, 1.1, 0, 0, 0)

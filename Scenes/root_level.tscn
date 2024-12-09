@@ -1,10 +1,11 @@
-[gd_scene load_steps=12 format=3 uid="uid://dx7j3plygltfi"]
+[gd_scene load_steps=13 format=3 uid="uid://dx7j3plygltfi"]
 
 [ext_resource type="Texture2D" uid="uid://gpdm8n0msvtj" path="res://Assests/Dark/texture_08.png" id="1_4w3jl"]
 [ext_resource type="Script" path="res://Scripts/root_level.gd" id="1_m1gv8"]
 [ext_resource type="Script" path="res://Scripts/camera_3d.gd" id="2_0uwqt"]
 [ext_resource type="PackedScene" uid="uid://cwo55kiklhp7u" path="res://Scenes/player.tscn" id="2_3dd6r"]
 [ext_resource type="PackedScene" uid="uid://24351524j3g2" path="res://Scenes/ui_controller.tscn" id="5_sfdju"]
+[ext_resource type="Script" path="res://Scenes/particle_controller.gd" id="7_d8e1o"]
 [ext_resource type="PackedScene" uid="uid://cfpdpedgwdqm7" path="res://Scenes/wave_spawner.tscn" id="7_vrrfq"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_27ry6"]
@@ -98,3 +99,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -44.909, 1, -13.923)
 
 [node name="Spawnpoint10" type="Node3D" parent="wave_spawner/spawn_area"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -43, 1, -34.808)
+
+[node name="particle_controller" type="Node3D" parent="."]
+script = ExtResource("7_d8e1o")

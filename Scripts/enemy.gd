@@ -35,6 +35,8 @@ func move_ai(target,delta):      #basically same as move_logic in player.gd {yep
 		velocity = Vector3.ZERO
 
 func death(body):
+	get_node("../../particle_controller").explode_particle(position)
+
 	player.score += 100
 	queue_free()
 	body.queue_free()
