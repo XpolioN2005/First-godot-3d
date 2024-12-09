@@ -9,7 +9,7 @@ func _ready():
 	explode()
 
 
-func _process(delta):
+func _process(_delta):
 	print(position)
 
 func explode():
