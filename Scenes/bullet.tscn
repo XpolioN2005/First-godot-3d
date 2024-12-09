@@ -1,14 +1,22 @@
-[gd_scene load_steps=7 format=3 uid="uid://bxq8xdvmtuw5l"]
+[gd_scene load_steps=9 format=3 uid="uid://bxq8xdvmtuw5l"]
 
 [ext_resource type="Script" path="res://Scripts/bullet.gd" id="1_5cgwn"]
 [ext_resource type="Texture2D" uid="uid://dftfoiygfldw3" path="res://Assests/Orange/texture_10.png" id="1_mxuou"]
+[ext_resource type="Shader" path="res://outline.gdshader" id="3_77xsd"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_g3noy"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_jewvy"]
 radius = 0.614465
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fntcl"]
+render_priority = 0
+shader = ExtResource("3_77xsd")
+shader_parameter/shadow_color = Color(0, 0, 0, 1)
+shader_parameter/shadow_thickness = 2.0
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xc7yw"]
+next_pass = SubResource("ShaderMaterial_fntcl")
 albedo_texture = ExtResource("1_mxuou")
 
 [sub_resource type="SphereMesh" id="SphereMesh_xeho4"]

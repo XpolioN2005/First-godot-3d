@@ -1,11 +1,17 @@
-[gd_scene load_steps=6 format=3 uid="uid://cwo55kiklhp7u"]
+[gd_scene load_steps=8 format=3 uid="uid://cwo55kiklhp7u"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_j25g4"]
 [ext_resource type="Texture2D" uid="uid://dfnkbk06ofnqp" path="res://Assests/Green/texture_09.png" id="2_mtki7"]
+[ext_resource type="Shader" path="res://outline.gdshader" id="3_ak1me"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_3pxef"]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4bqui"]
+render_priority = 0
+shader = ExtResource("3_ak1me")
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4nu8n"]
+next_pass = SubResource("ShaderMaterial_4bqui")
 albedo_texture = ExtResource("2_mtki7")
 uv1_scale = Vector3(2, 2, 2)
 
