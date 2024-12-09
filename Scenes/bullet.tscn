@@ -1,0 +1,28 @@
+[gd_scene load_steps=7 format=3 uid="uid://bxq8xdvmtuw5l"]
+
+[ext_resource type="Script" path="res://Scripts/bullet.gd" id="1_5cgwn"]
+[ext_resource type="Texture2D" uid="uid://dftfoiygfldw3" path="res://Assests/Orange/texture_10.png" id="1_mxuou"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_g3noy"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_jewvy"]
+radius = 0.614465
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xc7yw"]
+albedo_texture = ExtResource("1_mxuou")
+
+[sub_resource type="SphereMesh" id="SphereMesh_xeho4"]
+material = SubResource("StandardMaterial3D_xc7yw")
+
+[node name="bullet" type="RigidBody3D"]
+mass = 1000.0
+physics_material_override = SubResource("PhysicsMaterial_g3noy")
+gravity_scale = 0.0
+inertia = Vector3(1000, 1000, 1000)
+script = ExtResource("1_5cgwn")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_jewvy")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_xeho4")

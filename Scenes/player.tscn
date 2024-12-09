@@ -1,0 +1,25 @@
+[gd_scene load_steps=6 format=3 uid="uid://cwo55kiklhp7u"]
+
+[ext_resource type="Script" path="res://Scripts/player.gd" id="1_j25g4"]
+[ext_resource type="Texture2D" uid="uid://dfnkbk06ofnqp" path="res://Assests/Green/texture_09.png" id="2_mtki7"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_3pxef"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4nu8n"]
+albedo_texture = ExtResource("2_mtki7")
+uv1_scale = Vector3(2, 2, 2)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_25qnd"]
+material = SubResource("StandardMaterial3D_4nu8n")
+
+[node name="player" type="CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("1_j25g4")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_3pxef")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("CapsuleMesh_25qnd")

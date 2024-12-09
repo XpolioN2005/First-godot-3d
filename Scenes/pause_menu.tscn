@@ -1,0 +1,66 @@
+[gd_scene load_steps=3 format=3 uid="uid://clmxb71qpukqq"]
+
+[ext_resource type="Script" path="res://Scripts/pause_menu.gd" id="1_fh0m4"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_ebetu"]
+line_spacing = 5.0
+
+[node name="Pause_menu" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_fh0m4")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0.0823529)
+metadata/_edit_use_anchors_ = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -326.0
+offset_right = 316.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="resume" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "RESUME"
+
+[node name="restart" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "RESTART"
+
+[node name="quit" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "QUIT"
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 153.0
+offset_bottom = 227.0
+grow_horizontal = 2
+text = "PAUSED"
+label_settings = SubResource("LabelSettings_ebetu")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="VBoxContainer/resume" to="." method="_on_resume_pressed"]
+[connection signal="pressed" from="VBoxContainer/restart" to="." method="_on_restart_pressed"]
+[connection signal="pressed" from="VBoxContainer/quit" to="." method="_on_quit_pressed"]
