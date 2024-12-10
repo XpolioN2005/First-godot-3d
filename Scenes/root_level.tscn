@@ -1,12 +1,13 @@
-[gd_scene load_steps=13 format=3 uid="uid://dx7j3plygltfi"]
+[gd_scene load_steps=14 format=3 uid="uid://dx7j3plygltfi"]
 
 [ext_resource type="Texture2D" uid="uid://gpdm8n0msvtj" path="res://Assests/Dark/texture_08.png" id="1_4w3jl"]
 [ext_resource type="Script" path="res://Scripts/root_level.gd" id="1_m1gv8"]
 [ext_resource type="Script" path="res://Scripts/camera_3d.gd" id="2_0uwqt"]
 [ext_resource type="PackedScene" uid="uid://cwo55kiklhp7u" path="res://Scenes/player.tscn" id="2_3dd6r"]
-[ext_resource type="PackedScene" uid="uid://24351524j3g2" path="res://Scenes/ui_controller.tscn" id="5_sfdju"]
-[ext_resource type="Script" path="res://Scenes/particle_controller.gd" id="7_d8e1o"]
+[ext_resource type="PackedScene" uid="uid://24351524j3g2" path="res://ui_controller.tscn" id="5_sfdju"]
+[ext_resource type="Script" path="res://Scripts/particle_controller.gd" id="7_d8e1o"]
 [ext_resource type="PackedScene" uid="uid://cfpdpedgwdqm7" path="res://Scenes/wave_spawner.tscn" id="7_vrrfq"]
+[ext_resource type="PackedScene" uid="uid://bj327espsty5" path="res://Scenes/power_up_spawner.tscn" id="8_8b4od"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_27ry6"]
 albedo_texture = ExtResource("1_4w3jl")
@@ -102,3 +103,31 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -43, 1, -34.808)
 
 [node name="particle_controller" type="Node3D" parent="."]
 script = ExtResource("7_d8e1o")
+
+[node name="powerUP_spawner" parent="." instance=ExtResource("8_8b4od")]
+
+[node name="spawn_area" type="Node3D" parent="powerUP_spawner"]
+
+[node name="spawnpoint1" type="Node3D" parent="powerUP_spawner/spawn_area"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.11162, 0, -21.769)
+
+[node name="spawnpoint2" type="Node3D" parent="powerUP_spawner/spawn_area"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -23.23)
+
+[node name="spawnpoint3" type="Node3D" parent="powerUP_spawner/spawn_area"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.4197, 0, -24.412)
+
+[node name="spawnpoint4" type="Node3D" parent="powerUP_spawner/spawn_area"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.11162, 0, -4.00857)
+
+[node name="spawnpoint5" type="Node3D" parent="powerUP_spawner/spawn_area"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.8055, 0, -4.00857)
+
+[node name="spawnpoint6" type="Node3D" parent="powerUP_spawner/spawn_area"]
+transform = Transform3D(0.997165, 0, -0.0752398, 0, 1, 0, 0.0752398, 0, 0.997165, -6.71392, 0, 1.78619)
+
+[node name="powerup_timer" type="Timer" parent="powerUP_spawner"]
+wait_time = 3.0
+autostart = true
+
+[connection signal="timeout" from="powerUP_spawner/powerup_timer" to="powerUP_spawner" method="_on_powerup_timer_timeout"]

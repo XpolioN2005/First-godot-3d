@@ -5,6 +5,8 @@ extends CharacterBody3D
 @onready var camera = %camera
 @onready var score = 0
 
+@onready var ammo = 5
+
 
 var bullet = preload("res://Scenes/bullet.tscn")
 
@@ -14,8 +16,8 @@ var target_pos = Vector3()
 var moving_to_target = false
 
 
-# func _ready():
-# 	$MeshInstance3D.visible = false
+func _ready():
+	add_to_group("player")
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and Input.is_action_just_pressed("left_click"):
@@ -48,7 +50,8 @@ func move_logic(target,delta):
 
 
 func shoot(pos):
-	if Input.is_action_just_pressed("right_click"):
+	if Input.is_action_just_pressed("right_click") and ammo >0:
+		ammo = max(0,ammo -1)
 		var instance = bullet.instantiate()
 		instance.camera = camera
 		instance.player = %player
