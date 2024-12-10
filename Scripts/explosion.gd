@@ -8,10 +8,6 @@ extends Node3D
 func _ready():
 	explode()
 
-
-func _process(_delta):
-	print(position)
-
 func explode():
 	debri.emitting = true
 	smoke.emitting = true
