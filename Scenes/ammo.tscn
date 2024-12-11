@@ -1,20 +1,53 @@
-[gd_scene load_steps=4 format=3 uid="uid://cek6hhv3078tf"]
+[gd_scene load_steps=7 format=3 uid="uid://cek6hhv3078tf"]
 
 [ext_resource type="Script" path="res://Scripts/ammo.gd" id="1_8rfk5"]
 
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_kst0y"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_axrld"]
+size = Vector3(0.681885, 1, 2.0448)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sa31a"]
+albedo_color = Color(0.00184107, 0.00184107, 0.00184107, 1)
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_4c4lf"]
+material = SubResource("StandardMaterial3D_sa31a")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bdwwo"]
+albedo_color = Color(1, 1, 0, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_4d08n"]
+material = SubResource("StandardMaterial3D_bdwwo")
 
 [node name="Area2D" type="Area3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 collision_mask = 2
 script = ExtResource("1_8rfk5")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-shape = SubResource("CylinderShape3D_kst0y")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00842285, 0, 0.00128174)
+shape = SubResource("BoxShape3D_axrld")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+[node name="bullet1" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
 mesh = SubResource("CylinderMesh_4c4lf")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="bullet1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.05128, 0)
+mesh = SubResource("SphereMesh_4d08n")
+
+[node name="bullet2" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, -0.65)
+mesh = SubResource("CylinderMesh_4c4lf")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="bullet2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.05128, 0)
+mesh = SubResource("SphereMesh_4d08n")
+
+[node name="bullet3" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0.65)
+mesh = SubResource("CylinderMesh_4c4lf")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="bullet3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.05128, 0)
+mesh = SubResource("SphereMesh_4d08n")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
