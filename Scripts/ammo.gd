@@ -28,5 +28,5 @@ func _process(delta: float) -> void:
 
 func _on_body_entered(body:Node3D) -> void:
 	if body.is_in_group("player"):
-		body.ammo += 1
+		body.ammo += 5
 		queue_free()
